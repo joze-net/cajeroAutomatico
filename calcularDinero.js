@@ -25,7 +25,7 @@ dinero=parseInt(txtdinero.value);//aqui se almacenara lo dogitado en la caja de 
 papeles=0;//aqui se almacenar el numero de billetes de cada valor
 div=0;//aqui se realizara el calculo del valor a retirar / el valor del billete
 
-for (var b of cajaMenor){//for each para cada elemento almacenado en cajaMenor se ejecutara el siguiente codigo
+for (var b of cajaMenor){//for each para cada elemento almacenado en cajaMenor se ejecutara el siguiente codigommmmmm
 	 
 	if(dinero>0){//dinero debe ser mayor a cero para que entre en el condicional
 		
