@@ -1,7 +1,7 @@
 var btn=document.getElementById("Extraer");
 var txtdinero=document.getElementById("cantidadDinero");
 var result=document.getElementById("resultado");
-//btn.addEventListener("click",inicio);
+btn.addEventListener("click",calcularBilletes);
 
 
 class Billete{
@@ -21,6 +21,8 @@ cajaMenor.push(new Billete(10,2));
 
 entregar=[];//variable para almacenar el dinero que se va a entregar
 
+function calcularBilletes(){
+resultado.innerHTML="";//cada vez que se llam la funcion se resetea el resultado
 dinero=parseInt(txtdinero.value);//aqui se almacenara lo dogitado en la caja de texto
 papeles=0;//aqui se almacenar el numero de billetes de cada valor
 div=0;//aqui se realizara el calculo del valor a retirar / el valor del billete
@@ -46,6 +48,7 @@ for (var b of cajaMenor){//for each para cada elemento almacenado en cajaMenor s
     
 
     
+}
 }
 
 
