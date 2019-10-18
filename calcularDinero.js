@@ -19,10 +19,11 @@ cajaMenor.push(new Billete(50,3));
 cajaMenor.push(new Billete(20,2));
 cajaMenor.push(new Billete(10,2));
 
-entregar=[];//variable para almacenar el dinero que se va a entregar
 
 function calcularBilletes(){
-resultado.innerHTML="";//cada vez que se llam la funcion se resetea el resultado
+
+entregar=[];//variable para almacenar el dinero que se va a entregar
+resultado.innerHTML="";//cada vez que se llam la funcion se resetea el resultado//////////////////////////////
 dinero=parseInt(txtdinero.value);//aqui se almacenara lo dogitado en la caja de texto
 papeles=0;//aqui se almacenar el numero de billetes de cada valor
 div=0;//aqui se realizara el calculo del valor a retirar / el valor del billete
@@ -39,16 +40,33 @@ for (var b of cajaMenor){//for each para cada elemento almacenado en cajaMenor s
        }else{
        papeles=div;//de ko contrario div es menor, asi que se asignan los billetes que correspondan l dindero solicitado
        }
+        entregar.push(new Billete(b.valor,papeles));//despues de validar por cada billete y calculado el numero de billtes a cada valor solicitado se agrega
+    	//al array entregar, donde se almacena los ovjs de tipo billete con su valor y cantidad de billetes
+    	dinero=dinero-(papeles*b.valor);//despues de todo se resta el valor entregado ciclicamente,lo cual resulta entre papeles y el valor del billete
+    	
+
     
-    entregar.push(new Billete(b.valor,papeles));//despues de validar por cada billete y calculado el numero de billtes a cada valor solicitado se agrega
-    //al array entregar, donde se almacena los ovjs de tipo billete con su valor y cantidad de billetes
-    dinero=dinero-(papeles*b.valor);//despues de todo se resta el valor entregado ciclicamente,lo cual resulta entre papeles y el valor del billete
-    resultado.innerHTML+="Denominacion: "+b.valor+" No.Billetes: "+papeles+"<br/>"
 }
     
 
     
 }
+
+
+    if(dinero>0){//si dinero esmayor a 0 es por que aun ueda dinero para entregar bien sea por que no alcanzan los billetes o por cantidad erronea
+	    	resultado.innerHTML="Cantidad de dinero no disponible";
+	
+    }else{//si no es porque la variable dinero quedo en 0 verificando los billetes a entrear correspondientes a lo pedido
+    	var i=0;//para iterar y movernos enn el indice de cajaMenor
+    	for (e of entregar) {//por cada billete creado en la variable entregar mostramos los resultados y descontamos de la cajMenor lo entregado
+    		if (e.cantidad>0) {
+    		    	resultado.innerHTML+="Denominacion: "+e.valor+" No.Billetes: "+e.cantidad+"<br/>"
+    		    	cajaMenor[i].cantidad-=e.cantidad;
+    		    	
+			}
+			i++;//incrementamos en 1 para la siguiente posicion
+    	}
+    }
 }
 
 
